@@ -1,0 +1,15 @@
+spring: 
+  datasource: 
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=hotel
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: 123
+  thymeleaf: 
+    mode: HTML
+    cache: false
+mybatis: 
+  type-aliases-package: 
+    com.zm.hotel.room.po,com.zm.hotel.customer.po,com.zm.hotel.order.po,com.zm.hotel.order.vo,com.zm.hotel.manager.po
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

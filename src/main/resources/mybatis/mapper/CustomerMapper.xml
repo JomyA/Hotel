@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zm.hotel.customer.dao.CustomerDao">
+	
+	<select id="getAllCustomer" resultType="Customer">
+		select * from Customer
+	</select>
+	
+	<select id="list" resultType="Customer">
+		select * from Customer
+		<where>
+			<if test="_parameter!=null and _parameter!=''">and name = #{id} or
+			cust_identity = #{id} or gender = #{id} or phone = #{id}</if>
+		</where>
+	</select>
+	
+	<select id="getCustByIden" parameterType="String" resultType="Customer">
+		select * from Customer
+		<where>
+			<if test="_parameter!=null and _parameter!=''">and cust_identity = #{identity}</if>
+		</where>
+	</select>
+	
+	<update id="update" parameterType="Customer">
+		update Customer
+		<set>
+			<if test="name!=null and name!=''">name = #{name},</if>
+			<if test="gender!=null and gender!=''">gender = #{gender},</if>
+			<if test="phone!=null">phone = #{phone},</if>
+		</set>
+		where cust_identity = #{custIdentity}
+	</update>
+	
+	<insert id="insert" parameterType="Customer">
+		insert into Customer(cust_identity,name,gender,phone)
+		values
+		(#{custIdentity},#{name},#{gender},#{phone})
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		delete from Customer where cust_identity = #{custIdentity}
+	</delete>
+</mapper>

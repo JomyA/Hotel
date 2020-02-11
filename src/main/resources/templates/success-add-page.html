@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Open Graph Meta-->
+    <meta property="og:type" content="website"></meta>
+    <meta property="og:site_name" content="Vali Admin"></meta>
+    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme"></meta>
+    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin"></meta>
+    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png"></meta>
+    <title>Hotel</title>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"></link>
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- 顶部导航栏 -->
+    <header class="app-header"><a class="app-header__logo" th:href="@{/main.html}">Hotel</a>
+      <!-- 折叠按钮-->
+	  <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <!-- 导航栏右边-->
+      <ul class="app-nav">
+        <!-- 用户 -->
+        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li><a class="dropdown-item" th:href="@{/manager/getManager/}+${session.loginUser}"><i class="fa fa-user fa-lg"></i> 个人信息</a></li>
+            <li><a class="dropdown-item" th:href="@{/}"><i class="fa fa-sign-out fa-lg"></i> 退出登录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- 左侧导航栏 -->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" th:src="@{/pic/userPic.jpg}" alt="User Image">
+        <div>
+          <p class="app-sidebar__user-name">[[${session.loginUser}]]</p>
+          <p class="app-sidebar__user-designation">欢迎登录本系统！</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li><a class="app-menu__item active" th:href="@{/main.html}"><i class="app-menu__icon fa fa-building" aria-hidden="true"></i><span class="app-menu__label">酒店</span></a></li>
+        <li><a class="app-menu__item" th:href="@{/cust/all}"><i class="app-menu__icon fa fa-user-o" aria-hidden="true"></i><span class="app-menu__label">客户</span></a></li>
+        <li><a class="app-menu__item" th:href="@{/room.html}"><i class="app-menu__icon fa fa-bed" aria-hidden="true"></i><span class="app-menu__label">客房</span></a></li>
+		<li><a class="app-menu__item" th:href="@{/order/all}"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">订单</span></a></li>
+		<li><a class="app-menu__item" th:href="@{/manager/getManager/}+${session.loginUser}"><i class="app-menu__icon fa fa-id-card" aria-hidden="true"></i><span class="app-menu__label">个人</span></a></li>
+      </ul>
+    </aside>
+    <main class="app-content">
+      <div class="page-success tile">
+        <h1><i class="fa fa-check-circle" aria-hidden="true"></i> 添加成功</h1>
+        <p></p>
+        <p><a class="btn btn-primary" href="javascript:window.history.back();">返回上一页</a></p>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <!-- Google analytics script-->
+    <script type="text/javascript">
+      if(document.location.hostname == 'pratikborsadiya.in') {
+      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      	ga('create', 'UA-72504830-1', 'auto');
+      	ga('send', 'pageview');
+      }
+    </script>
+  </body>
+</html>

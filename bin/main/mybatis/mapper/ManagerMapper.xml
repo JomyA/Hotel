@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zm.hotel.manager.dao.ManagerDao">
+
+	<select id="getManager" parameterType="String" resultType="Manager">  <!-- dao接口中的方法与id一一对应 -->
+		select * from Manager
+		<where>
+			<if test="_parameter!=null and _parameter!=''">and account = #{account}</if>
+		</where>
+	</select>
+	
+	<update id="update" parameterType="Manager">
+		update Manager
+		<set>
+			<if test="password!=null">password = #{password},</if>	
+			<if test="phone!=null">phone = #{phone},</if>
+		</set>
+		where account = #{account}
+	</update>
+</mapper>
